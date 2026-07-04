@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanillaTask | Home</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <header class="app-header">
+        <a class="brand" href="homepage.html" aria-label="VanillaTask homepage">
+            <span class="brand-mark" aria-hidden="true">✦</span>
+            <span class="brand-text">VanillaTask</span>
+        </a>
+
+        <nav class="header-actions" aria-label="Account actions">
+            <button class="primary-btn" id="openTaskModal" type="button">
+                <span aria-hidden="true">+</span>
+                Add Task
+            </button>
+            <span class="avatar" aria-hidden="true">P</span>
+            <span class="username">pratham</span>
+            <button class="ghost-btn" type="button">Log Out</button>
+        </nav>
+    </header>
+
+    <main class="board" aria-label="Task board">
+        <section class="task-column" data-status="todo" aria-labelledby="todo-title">
+            <div class="column-header">
+                <h2 id="todo-title"><span class="status-dot todo-dot"></span>To Do</h2>
+                <span class="task-count" data-count="todo">0</span>
+            </div>
+            <div class="task-list" data-list="todo"></div>
+            <button class="column-add-btn" type="button" data-add-status="todo">+ Add task</button>
+        </section>
+
+        <section class="task-column" data-status="progress" aria-labelledby="progress-title">
+            <div class="column-header">
+                <h2 id="progress-title"><span class="status-dot progress-dot"></span>In Progress</h2>
+                <span class="task-count" data-count="progress">0</span>
+            </div>
+            <div class="task-list" data-list="progress"></div>
+        </section>
+
+        <section class="task-column" data-status="done" aria-labelledby="done-title">
+            <div class="column-header">
+                <h2 id="done-title"><span class="status-dot done-dot"></span>Done</h2>
+                <span class="task-count" data-count="done">0</span>
+            </div>
+            <div class="task-list" data-list="done"></div>
+        </section>
+    </main>
+
+    <dialog class="task-modal" id="taskModal">
+        <form class="task-form" id="taskForm" method="dialog">
+            <div class="modal-header">
+                <h2>Add task</h2>
+                <button class="icon-btn" id="closeTaskModal" type="button" aria-label="Close">×</button>
+            </div>
+
+            <label for="taskTitle">Title</label>
+            <input id="taskTitle" name="title" type="text" placeholder="Task title" autocomplete="off" required>
+
+            <label for="taskDescription">Description</label>
+            <textarea id="taskDescription" name="description" rows="3" placeholder="Short task details"></textarea>
+
+            <div class="form-grid">
+                <div>
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority" name="priority">
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="taskStatus">Status</label>
+                    <select id="taskStatus" name="status">
+                        <option value="todo">To Do</option>
+                        <option value="progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+            </div>
+
+            <p class="form-error" id="formError" aria-live="polite"></p>
+
+            <div class="form-actions">
+                <button class="ghost-btn" id="cancelTask" type="button">Cancel</button>
+                <button class="primary-btn" type="submit">Create Task</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="homepage.js"></script>
+</body>
+</html>
